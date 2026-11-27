@@ -1,0 +1,13 @@
+node_modules
+.next
+.next-check
+out
+build
+.env
+.env.local
+.env*.local
+*.pem
+.eyesight-data
+drizzle
+*.tsbuildinfo
+next-env.d.ts

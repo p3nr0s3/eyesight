@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: eyesight
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: AUTH_REQUIRED
+        value: "true"
+      - key: ENCRYPTION_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: eyesight-db
+          property: connectionString
+
+databases:
+  - name: eyesight-db
+    plan: free
+    databaseName: eyesight
+    user: eyesight
